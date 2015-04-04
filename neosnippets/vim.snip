@@ -26,6 +26,13 @@ options     head
       ${0:TARGET}
     endfor
 
+snippet     for_each
+abbr        fe
+options     head
+    for ${1:#:var} in ${2:#:haystack}
+      ${0:TARGET}
+    endfor
+
 snippet     while
 abbr        while endwhile
 options     head
@@ -35,7 +42,7 @@ options     head
 
 snippet     function
 abbr        func endfunc
-alias       func
+alias       func me
 options     head
     function! ${1:#:func_name}(${2}) abort
       ${0:TARGET}
@@ -65,10 +72,10 @@ abbr        catch /pattern/
 options     head
     catch ${1:/${2:#:pattern: empty, E484, Vim(cmdname):{errmsg\\}\}/}
 
-snippet     echomsg
-alias       log
+snippet     echo
+alias       log out lg
 options     head
-    echomsg string(${1:TARGET})
+    echo ${1:"${2\}"}
 
 snippet     command
 abbr        command call function
@@ -233,4 +240,20 @@ abbr        vim-version-check
 snippet     version_new
 abbr        vim-version-check-new
         has('patch-${1}')
+
+snippet     return
+alias        re
+options     head
+    return ${1};
+
+snippet     return_0
+alias        r0
+options     head
+    return 0;
+
+snippet     assert
+alias       as
+options     head
+    exec Assert(${1})
+
 
