@@ -9,8 +9,8 @@ options head
     }
 
 snippet class
-abbr    class {}
-    class ${1:#:Name} ${2::} ${3:Parent}${4:,} ${5:Interface}
+alias   pcl
+    class ${1:#:Name}
     {
         ${0:TARGET}
     }
@@ -31,14 +31,14 @@ abbr    interface {}
 
 snippet public_method
 alias pme
-    public ${1:void} ${2:#:Method}(${3:#:arguments})
+    public ${2:void} ${1:#:Method}(${3:#:arguments})
     {
         ${0:TARGET}
     }
 
 snippet method
 alias me
-    ${1:void} ${2:#:Method}(${3:#:arguments})
+    ${2:void} ${1:#:Method}(${3:#:arguments})
     {
         ${0:TARGET}
     }
@@ -100,6 +100,13 @@ abbr    else if () {}
         ${0:TARGET}
     }
 
+snippet else
+alias   els, el, else
+    else
+    {
+        ${0:TARGET}
+    }
+
 snippet ifelse
 alias   ifel
 abbr    if () {} else {}
@@ -138,7 +145,7 @@ abbr    for () {}
 snippet foreach
 alias   fore
 abbr    foreach () {}
-    foreach (${1:#:var} in ${2:#:iter})
+    foreach (var ${2:#:item} in ${1:#:iter})
     {
         ${0:TARGET}
     }
@@ -508,7 +515,7 @@ options     head
 snippet     return
 alias        re
 options     head
-    return ${1};
+    return ${1}
 
 snippet     return_false
 alias        rf
@@ -603,13 +610,13 @@ options     head
 snippet     assert
 alias       as
 options     head
-    Assert.That($0);
+    Assert.That(${1});
 
 snippet     assert_todo
 alias       ast
 options     head
     #warning "TODO"
-    Assert.Fail("TODO");
+    Assert.Fail("TODO");${1}
 
 snippet     assert_fail_todo
 alias       asft
@@ -659,19 +666,19 @@ options     head
 snippet     container_bind_installer
 alias       cbinr
 options     head
-    Container.Bind<IInstaller>().ToSingle<${1}>();
+    Container.Install<${1}>();
 
 snippet     container_bind_iinitializable
 alias       cbinsi
 options     head
-    Container.Bind<IInitializable>().ToSingle<$0>();
+    Container.Bind<IInitializable>().ToSingle<${0}>();
 
 snippet     container_bind_itickable
 alias       cbinst
 options     head
-    Container.Bind<ITickable>().ToSingle<$0>();
+    Container.Bind<ITickable>().ToSingle<${0}>();
 
 snippet     container_bind_idisposable
 alias       cbinsd
 options     head
-    Container.Bind<IDisposable>().ToSingle<$0>();
+    Container.Bind<IDisposable>().ToSingle<${0}>();
