@@ -29,6 +29,13 @@ abbr    interface {}
         ${0:TARGET}
     }
 
+snippet public interface
+alias pin
+    public interface ${1:#:IName}
+    {
+        ${0:TARGET}
+    }
+
 snippet public_method
 alias pme
     public ${2:void} ${1:#:Method}(${3:#:arguments})
@@ -137,9 +144,8 @@ abbr    do {} while() {}
 
 snippet for
 abbr    for () {}
-    for (${1:#:var}; ${2:#:condition}; ${3:#:effect})
-    {
-        ${0:TARGET}
+    for (int ${1} = 0; $1 < ${2:#:max}; $1++)
+    {${0}
     }
 
 snippet foreach
