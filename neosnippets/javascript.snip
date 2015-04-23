@@ -6,6 +6,7 @@ options head
 
 snippet function
 abbr    func
+alias    me
 options word
   function ${1:#:function_name}(${2:#:argument}) {
     ${0:TARGET}
@@ -35,6 +36,12 @@ options head
     ${0:TARGET}
   }
 
+snippet else
+options head
+  else {
+    ${0:TARGET}
+  }
+
 snippet if-else
 abbr ife
 options head
@@ -46,12 +53,6 @@ options head
 snippet for
 options head
   for (var ${1:i}=0; $1 < ${2:#:Things}.length; ++$1) {
-    ${0:TARGET}
-  }
-
-snippet forin
-options head
-  for (var ${1:i} in ${2:#:Things}) {
     ${0:TARGET}
   }
 
@@ -69,9 +70,14 @@ options head
   setTimeout(function() { ${0} }, ${1:10});
 
 snippet console-log
+alias out
+options head
+  console.log(${1:"${2\}"});
+
+snippet custom-log
 alias lg
 options head
-  console.log(${0:TARGET});
+    Logger.log(${1:"${2\}"});
 
 snippet iife
 options head
@@ -79,3 +85,9 @@ options head
     'use strict';
     ${0:TARGET}
   })(${2});
+
+snippet     return
+alias        re
+options     head
+    return ${1}
+
