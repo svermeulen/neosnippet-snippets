@@ -45,7 +45,7 @@ alias pme
 
 snippet method
 alias me
-    ${2:public void} ${1:#:Method}(${3:#:arguments})
+    public ${2:void} ${1:#:Method}(${3:#:arguments})
     {
         ${0:TARGET}
     }
@@ -149,9 +149,9 @@ abbr    for () {}
     }
 
 snippet foreach
-alias   fore
+alias   fore fe
 abbr    foreach () {}
-    foreach (var ${2:#:item} in ${1:#:iter})
+    foreach (var ${1:#:item} in ${2:#:iter})
     {
         ${0:TARGET}
     }
