@@ -38,16 +38,14 @@ alias pin
 
 snippet public_method
 alias pme
-    public ${2:void} ${1:#:Method}(${3:#:arguments})
+    public ${2:void} ${1:#:Method}()
     {
-        ${0:TARGET}
     }
 
 snippet method
 alias me
-    public ${2:void} ${1:#:Method}(${3:#:arguments})
+    public ${2:void} ${1:#:Method}()
     {
-        ${0:TARGET}
     }
 
 snippet enum
@@ -64,14 +62,14 @@ abbr    get {}
     get
     {
         ${1:TARGET}
-    }${0}
+    }
 
 snippet set
 abbr    set {}
     set
     {
         ${1:TARGET}
-    }${0}
+    }
 
 
 # PreProcess Syntax
@@ -145,7 +143,7 @@ abbr    do {} while() {}
 snippet for
 abbr    for () {}
     for (int ${1} = 0; $1 < ${2:#:max}; $1++)
-    {${0}
+    {
     }
 
 snippet foreach
@@ -179,7 +177,7 @@ options head
 
 snippet goto
 options head
-    goto case ${1:#:Val};${0}
+    goto case ${1:#:Val};
 
 snippet default
 options head
@@ -346,12 +344,12 @@ options head
 snippet using_import
 alias   import
 options head
-    using ${1:#:path};${0}
+    using ${1:#:path};
 
 snippet using_typedef
 alias   typedef
 options head
-    using ${1:Name} = ${2:Type};${0}
+    using ${1:Name} = ${2:Type};
 
 
 # Import Path
@@ -386,17 +384,17 @@ options head
 snippet conditional
 alias   cond
 options head
-    [Conditional("${1:#:SYMBOL}")]${0}
+    [Conditional("${1:#:SYMBOL}")]
 
 snippet obsolete
 alias   obs dep deprecated
 options head
-    [Obsolete("${1:#:description}")]${0}
+    [Obsolete("${1:#:description}")]
 
 snippet asm_internals_visible_to
 alias   internals asmInternalsVisibleTo friend_attr
 options head
-    [assembly: InternalsVisibleTo("${1:#:FriendName}")]${0}
+    [assembly: InternalsVisibleTo("${1:#:FriendName}")]
 
 
 # Other
@@ -410,12 +408,12 @@ options head
 snippet writeline
 alias   println p
 options head
-    Console.WriteLine(${1:#:message});${0}
+    Console.WriteLine(${1:#:message});
 
 snippet write
 alias   print
 options head
-    Console.Write(${1:#:message});${0}
+    Console.Write(${1:#:message});
 
 snippet helloworld
 options head
@@ -488,7 +486,7 @@ alias   pp
     {
         get${3:};
         set${4:};
-    }${0}
+    }
 
 snippet property_private
 alias   pr
@@ -496,7 +494,7 @@ alias   pr
     {
         get${3:};
         set${4:};
-    }${0}
+    }
 
 snippet     console_out
 abbr        out
@@ -622,12 +620,17 @@ snippet     assert_todo
 alias       ast
 options     head
     #warning "TODO"
-    Assert.Fail("TODO");${1}
+    Assert.Throw("TODO");
+
+snippet     gset
+abbr    gset
+options     head
+    { get; set; }
 
 snippet     assert_fail_todo
 alias       asft
 options     head
-    Assert.Fail("TODO");
+    Assert.Throw("TODO");
 
 snippet     assert_equals
 alias       ase
