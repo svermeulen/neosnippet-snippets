@@ -312,3 +312,97 @@ options word
     <div class="footer" role="contentinfo">
         ${1}
     </div>
+
+snippet :f
+options head
+    ${1:#:method_name}: function(${2:#:attribute}) {
+    ${0:TARGET}
+  }
+
+snippet function
+abbr    func
+alias    me
+options word
+    function ${1:#:function_name}(${2:#:argument}) {
+    ${0:TARGET}
+  }
+
+snippet function2
+abbr    func2
+options head
+    function ${1:function_name}(${2:argument}) {
+    ${0:TARGET}
+  }
+
+snippet proto
+options head
+    ${1:#:class_name}.prototype.${2:#:method_name} = function(${3:#:first_argument}) {
+    ${0:TARGET}
+  };
+
+
+snippet f
+options word
+    function(${1}) { ${0:TARGET} };
+
+snippet if
+options head
+    if (${1:true}) {
+    ${0:TARGET}
+  }
+
+snippet else
+options head
+    else {
+    ${0:TARGET}
+  }
+
+snippet if-else
+abbr ife
+options head
+    if (${1:#:condition}) {
+    ${0:TARGET}
+  } else {
+  }
+
+snippet for
+options head
+    for (var ${1:i}=0; $1 < ${2:#:Things}.length; ++$1) {
+    ${0:TARGET}
+  }
+
+snippet key-value
+abbr :,
+options word
+    ${1:#:value_name}: ${0:#:value},
+
+#snippet key
+#options word
+#  ${1:#:key}: "${2:#:value}"}${3:, }
+
+snippet setTimeout-function
+options head
+    setTimeout(function() { ${0} }, ${1:10});
+
+snippet console-log
+alias out
+options head
+    console.log(${1:"${2\}"});
+
+snippet custom-log
+alias lg
+options head
+    Logger.trace(${1:"${2\}"});
+
+snippet iife
+options head
+    (function(${1}) {
+    'use strict';
+    ${0:TARGET}
+  })(${2});
+
+snippet     return
+alias        re
+options     head
+    return ${1}
+
