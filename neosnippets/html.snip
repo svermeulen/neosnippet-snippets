@@ -323,9 +323,9 @@ snippet function
 abbr    func
 alias    me
 options word
-    function ${1:#:function_name}(${2:#:argument}) {
+    function() {
     ${0:TARGET}
-  }
+  };
 
 snippet function2
 abbr    func2
@@ -371,6 +371,11 @@ options head
     ${0:TARGET}
   }
 
+snippet foreach
+options head
+    for (var ${1:key} in ${2:things}) {
+  }
+
 snippet key-value
 abbr :,
 options word
@@ -392,7 +397,7 @@ options head
 snippet custom-log
 alias lg
 options head
-    Logger.trace(${1:"${2\}"});
+    console.log(${1:"${2\}"});
 
 snippet iife
 options head
