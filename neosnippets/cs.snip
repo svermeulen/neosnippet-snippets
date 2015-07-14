@@ -520,6 +520,11 @@ alias        out
 options     head
     Console.WriteLine(${1:"${2\}"});
 
+snippet     output_to_consolee
+alias        oute
+options     head
+    Console.Error.WriteLine(${1:"${2\}"});
+
 snippet     return
 alias        re
 options     head
@@ -657,9 +662,14 @@ options     head
     subContainer.Bind<${1}>().ToSingle();
 
 snippet     container_bind_interface
-alias       cbini
+alias       cbinf
 options     head
     Container.Bind<${1}>().ToSingle<${2}>();
+
+snippet     container_bind_instance
+alias       cbini
+options     head
+    Container.BindInstance(${1});
 
 snippet     container_bind_value
 alias       cbinv
