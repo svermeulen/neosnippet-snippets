@@ -61,6 +61,7 @@ options     head
 
 snippet     for
 abbr        for ... in ...: ...
+alias        fe
 options     head
     for ${1:#:value} in ${2:#:list}:
         ${0:TARGET}
@@ -80,6 +81,7 @@ options     head
 
 snippet     tryexcept
 abbr        try: ... except ...: ...
+alias       trye
 options     head
     try:
         ${1:TARGET}
