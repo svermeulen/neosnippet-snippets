@@ -50,11 +50,10 @@ alias me
 
 snippet enum
 abbr    enum {}
-    enum ${1:#:Name}
+    ${2}enum ${1:#:Name}
     {
         ${0:TARGET}
     }
-
 
 # Declare
 snippet get
@@ -704,3 +703,13 @@ snippet     container_bind_idisposable
 alias       cbinsd
 options     head
     Container.Bind<IDisposable>().ToSingle<${0}>();
+
+# I'm not sure how to make these snippets project specific
+snippet serializerwrite
+alias   serw
+    writer.Write<${0}>("${1}", value.${2});
+
+snippet serializerread
+alias   serr
+    value.${2} = reader.Read<${0}>("${1}");
+
