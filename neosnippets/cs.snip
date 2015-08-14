@@ -44,13 +44,13 @@ alias pme
 
 snippet method
 alias me
-    ${3}${2:void} ${1:#:Method}(${4})
-    {${5}
+    ${2:void} ${1:#:Method}()
+    {
     }
 
 snippet enum
 abbr    enum {}
-    ${2}enum ${1:#:Name}
+    enum ${1:#:Name}
     {
         ${0:TARGET}
     }
@@ -149,7 +149,7 @@ snippet foreach
 alias   fore fe
 abbr    foreach () {}
     foreach (var ${1:item} in ${2:#:iter})
-    {${3}
+    {
     }
 
 snippet switch
