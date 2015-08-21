@@ -72,10 +72,15 @@ abbr        catch /pattern/
 options     head
     catch ${1:/${2:#:pattern: empty, E484, Vim(cmdname):{errmsg\\}\}/}
 
-snippet     echo
-alias       log out lg
+snippet     log
+alias       log lg
 options     head
     Log ${1:"${2\}"}, ${3}
+
+snippet     pp
+alias       pp out
+options     head
+    PP ${1:"${2\}"}
 
 snippet     command
 abbr        command call function
