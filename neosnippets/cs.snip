@@ -20,6 +20,13 @@ alias   pcl
     {
     }
 
+snippet usli
+    using System.Linq;
+
+snippet readonly
+alias   ro
+    readonly ${0}
+
 snippet class
 alias   pscl
     public static class ${1:#:Name}
@@ -606,12 +613,12 @@ options     head
 snippet     assert_todo
 alias       ast
 options     head
-    Assert.Throw("STEVETRACE");
+    Assert.Throw("STEVETODO");
 
 snippet     log_todo
 alias       logtt
 options     head
-    Log.Trace("STEVETRACE");
+    Log.Trace("STEVETODO");
 
 snippet     gset
 abbr    gset
