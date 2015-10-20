@@ -11,6 +11,7 @@ abbr        unless ... end
   end
 
 snippet     def
+alias       me
 abbr        def ... end
   def ${1:#:method_name}
     ${2:TARGET}
@@ -60,6 +61,11 @@ snippet     edn
 abbr        => end?
   end
 
+snippet     print
+alias out lg
+options     word
+    puts ${1:"${2\}"}
+
 snippet     urlencode
   # coding: utf-8
   require 'erb'
@@ -70,11 +76,19 @@ alias   enc
   # coding: utf-8
   ${0}
 
-snippet each
+snippet times
 options word
-  each { |${1:#:variable}| ${2} }
+  times do |${1:#:variable}|
+    ${2}
+  end
 
-snippet each_do
+snippet while
+options word
+  while ${1:true} do
+    ${2}
+  end
+
+snippet each
 options word
   each do |${1:#:variable}|
     ${2}
@@ -171,5 +185,10 @@ snippet     module
   module ${1:#:Name}
     ${0}
   end
+
+snippet     return
+alias       re
+options     head
+    return ${1}
 
 # vim:set et ts=2 sts=2 sw=2 tw=0:
