@@ -94,6 +94,12 @@ options word
     ${2}
   end
 
+snippet inject
+options word
+  inject do |total, ${1:x}|
+    ${2}
+  end
+
 snippet each_byte
 options word
   each_byte { |${1:#:variable}| ${2} }
