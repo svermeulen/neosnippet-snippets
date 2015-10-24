@@ -660,6 +660,11 @@ alias       cbini
 options     head
     Container.BindInstance(${1});
 
+snippet     subcontainer_bind_instance
+alias       sbini
+options     head
+    subContainer.BindInstance(${1});
+
 snippet     container_bind_value
 alias       cbinv
 options     head
@@ -669,6 +674,11 @@ snippet     container_bind_all
 alias       cbina
 options     head
     Container.BindAllInterfacesToSingle<${1}>();
+
+snippet     subcontainer_bind_all
+alias       sbina
+options     head
+    subContainer.BindAllInterfacesToSingle<${1}>();
 
 snippet     container_bind_singleton
 alias       cbins

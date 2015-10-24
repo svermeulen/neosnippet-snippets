@@ -90,7 +90,7 @@ options word
 
 snippet each
 options word
-  each do |${1:#:variable}|
+  each do |${1:x}|
     ${2}
   end
 
@@ -102,7 +102,7 @@ options word
 
 snippet each_byte
 options word
-  each_byte { |${1:#:variable}| ${2} }
+  each_byte { |${1:i}| ${2} }
 
 snippet each_char
 options word
