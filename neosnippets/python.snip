@@ -28,6 +28,26 @@ options     head
         """${3:#:function documentation}"""
         ${0:TARGET}
 
+snippet     asf
+abbr        asf
+options     head
+    assertThat(False)
+
+snippet     ast
+abbr        ast
+options     head
+    assertThat(False, "TODO")
+
+snippet     ase
+abbr        ase
+options     head
+    assertIsEqual(${1}, ${2})
+
+snippet     as
+abbr        as
+options     head
+    assertThat(${1})
+
 snippet     defm
 abbr        def method(self, ...): ...
 options     head
@@ -112,10 +132,15 @@ snippet     filter
 abbr        [x for x in {list} if {condition}]
     [$1 for ${1:x} in ${2:#:list} if ${3:#:condition}]
 
-snippet     print
-alias out lg
+snippet     log
+alias lg
 options     word
-  print(${1:"${2\}"})
+  self._log.info(${1:"${2\}"})
+
+snippet     print
+alias out
+options     word
+    print(${1:"${2\}"})
 
 snippet     printformat
 alias lgf
@@ -145,7 +170,7 @@ abbr        import pdb..
 snippet     return
 alias       re
 options     head
-    return
+    return 
 
 snippet     init
 alias       init
