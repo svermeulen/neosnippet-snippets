@@ -649,67 +649,67 @@ options     head
 snippet     container_bind_factory
 alias       sbinf
 options     head
-    subContainer.BindFactory<${1}>();
+    subBinder.BindFactory<${1}>();
 
 snippet     container_bind_single
 alias       sbins
 options     head
-    subContainer.Bind<${1}>().ToSingle();
+    subBinder.Bind<${1}>().ToSingle();
 
 snippet     container_bind_interface
-alias       cbinf
+alias       binf
 options     head
-    Container.Bind<${1}>().ToSingle<${2}>();
+    Binder.Bind<${1}>().ToSingle<${2}>();
 
 snippet     container_bind_instance
-alias       cbini
+alias       bini
 options     head
-    Container.BindInstance(${1});
+    Binder.BindInstance(${1});
 
 snippet     subcontainer_bind_instance
 alias       sbini
 options     head
-    subContainer.BindInstance(${1});
+    subBinder.BindInstance(${1});
 
 snippet     container_bind_value
-alias       cbinv
+alias       binv
 options     head
-    Container.BindValue<${1}>().To(${2});
+    Binder.BindValue<${1}>().To(${2});
 
 snippet     container_bind_all
-alias       cbina
+alias       bina
 options     head
-    Container.BindAllInterfacesToSingle<${1}>();
+    Binder.BindAllInterfacesToSingle<${1}>();
 
 snippet     subcontainer_bind_all
 alias       sbina
 options     head
-    subContainer.BindAllInterfacesToSingle<${1}>();
+    subBinder.BindAllInterfacesToSingle<${1}>();
 
 snippet     container_bind_singleton
-alias       cbins
+alias       bins
 options     head
-    Container.Bind<${1}>().ToSingle();
+    Binder.Bind<${1}>().ToSingle();
 
 snippet     container_bind_installer
-alias       cbinr
+alias       binr
 options     head
-    Container.Install<${1}>();
+    Binder.Install<${1}>();
 
 snippet     container_bind_iinitializable
-alias       cbinsi
+alias       binsi
 options     head
-    Container.Bind<IInitializable>().ToSingle<${0}>();
+    Binder.Bind<IInitializable>().ToSingle<${0}>();
 
 snippet     container_bind_itickable
-alias       cbinst
+alias       binst
 options     head
-    Container.Bind<ITickable>().ToSingle<${0}>();
+    Binder.Bind<ITickable>().ToSingle<${0}>();
 
 snippet     container_bind_idisposable
-alias       cbinsd
+alias       binsd
 options     head
-    Container.Bind<IDisposable>().ToSingle<${0}>();
+    Binder.Bind<IDisposable>().ToSingle<${0}>();
 
 # I'm not sure how to make these snippets project specific
 snippet serializerwrite
