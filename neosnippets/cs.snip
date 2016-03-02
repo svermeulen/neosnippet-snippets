@@ -8,13 +8,13 @@ options head
         ${0:TARGET}
     }
 
-snippet class
+snippet class class
 alias   cl
     class ${1:#:Name}
     {
     }
 
-snippet class
+snippet public class
 alias   pcl
     public class ${1:#:Name}
     {
@@ -33,7 +33,7 @@ snippet readonly
 alias   ro
     readonly ${0}
 
-snippet class
+snippet public static class
 alias   pscl
     public static class ${1:#:Name}
     {
@@ -511,7 +511,7 @@ alias        out
 options     head
     Console.WriteLine(${1:"${2\}"});
 
-snippet     output_to_consolee
+snippet     output_to_consolee 2
 alias        oute
 options     head
     Console.Error.WriteLine(${1:"${2\}"});
