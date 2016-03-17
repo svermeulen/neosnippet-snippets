@@ -654,12 +654,12 @@ options     head
 snippet     container_bind_single
 alias       sbins
 options     head
-    subContainer.Bind<${1}>().ToSingle();
+    subContainer.Bind<${1}>().ToSelf().AsSingle();
 
 snippet     container_bind_interface
 alias       binf
 options     head
-    Container.Bind<${1}>().ToSingle<${2}>();
+    Container.Bind<${1}>().To<${2}>().AsSingle();
 
 snippet     container_bind_instance
 alias       bini
@@ -679,17 +679,17 @@ options     head
 snippet     container_bind_all
 alias       bina
 options     head
-    Container.BindAllInterfaces<${0}>().ToSingle<${0}>();
+    Container.BindAllInterfaces<${0}>().To<${0}>().AsSingle();
 
 snippet     subcontainer_bind_all
 alias       sbina
 options     head
-    subContainer.BindAllInterfaces<${0}>().ToSingle<${0}>();
+    subContainer.BindAllInterfaces<${0}>().To<${0}>().AsSingle();
 
 snippet     container_bind_singleton
 alias       bins
 options     head
-    Container.Bind<${1}>().ToSingle();
+    Container.Bind<${1}>().ToSelf().AsSingle();
 
 snippet     container_bind_installer
 alias       binr
@@ -699,17 +699,17 @@ options     head
 snippet     container_bind_iinitializable
 alias       binsi
 options     head
-    Container.Bind<IInitializable>().ToSingle<${0}>();
+    Container.Bind<IInitializable>().To<${0}>().AsSingle();
 
 snippet     container_bind_itickable
 alias       binst
 options     head
-    Container.Bind<ITickable>().ToSingle<${0}>();
+    Container.Bind<ITickable>().To<${0}>().AsSingle();
 
 snippet     container_bind_idisposable
 alias       binsd
 options     head
-    Container.Bind<IDisposable>().ToSingle<${0}>();
+    Container.Bind<IDisposable>().To<${0}>().AsSingle();
 
 # I'm not sure how to make these snippets project specific
 snippet serializerwrite
