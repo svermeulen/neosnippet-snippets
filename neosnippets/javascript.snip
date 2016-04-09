@@ -74,28 +74,28 @@ alias out
 options head
   console.log(${1:"${2\}"});
 
-snippet asnn
-    assert.isNotNull(${0});
+snippet as
+    assert(${0});
 
 snippet custom-log
 alias lg
 options head
-    log.info(${1:"${2\}"});
+    _log.info(${1:"${2\}"});
 
 snippet custom-log
 alias lgd
 options head
-    log.debug(${1:"${2\}"});
+    _log.debug(${1:"${2\}"});
 
 snippet custom-log
 alias lgw
 options head
-    log.warn(${1:"${2\}"});
+    _log.warn(${1:"${2\}"});
 
 snippet custom-log
 alias lge
 options head
-    log.error(${1:"${2\}"});
+    _log.error(${1:"${2\}"});
 
 snippet iife
 options head
