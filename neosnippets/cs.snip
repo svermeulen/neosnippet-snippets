@@ -487,8 +487,8 @@ snippet property_private
 alias   pr
     ${1:int} ${2:#:Name}
     {
-        get${3:};
-        set${4:};
+        get;
+        set;
     }
 
 snippet     console_out
@@ -659,7 +659,7 @@ options     head
 snippet     container_bind_single
 alias       sbins
 options     head
-    subContainer.Bind<${1}>().ToSelf().AsSingle();
+    subContainer.Bind<${1}>().AsSingle();
 
 snippet     container_bind_interface
 alias       binf
@@ -694,7 +694,7 @@ options     head
 snippet     container_bind_singleton
 alias       bins
 options     head
-    Container.Bind<${1}>().ToSelf().AsSingle();
+    Container.Bind<${1}>().AsSingle();
 
 snippet     container_bind_installer
 alias       binr
