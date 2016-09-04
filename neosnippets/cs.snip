@@ -4,20 +4,19 @@ alias   name
 abbr    namespace {}
 options head
     namespace ${1:#:Name}
-    {
-        ${0:TARGET}
+    {${0}
     }
 
 snippet class class
 alias   cl
     class ${1:#:Name}
-    {
+    {${0}
     }
 
 snippet public class
 alias   pcl
     public class ${1:#:Name}
-    {
+    {${0}
     }
 
 snippet usli
@@ -36,25 +35,25 @@ alias   ro
 snippet public static class
 alias   pscl
     public static class ${1:#:Name}
-    {
+    {${0}
     }
 
 snippet struct
 abbr    struct {}
     struct ${1:#:Name} ${2::} ${3:Interface}
-    {
+    {${0}
     }
 
 snippet interface
 abbr    interface {}
     interface ${1:#:IName} ${2::} ${3:Parent}
-    {
+    {${0}
     }
 
 snippet public interface
 alias pin
     public interface ${1:#:IName}
-    {
+    {${0}
     }
 
 snippet public_method
@@ -72,20 +71,20 @@ alias me
 snippet enum
 abbr    enum {}
     enum ${1:#:Name}
-    {
+    {${0}
     }
 
 # Declare
 snippet get
 abbr    get {}
     get
-    {
+    {${0}
     }
 
 snippet set
 abbr    set {}
     set
-    {
+    {${0}
     }
 
 
@@ -110,57 +109,57 @@ options head
 snippet if
 abbr    if () {}
     if (${1:#:condition})
-    {
+    {${0}
     }
 
 snippet elseif
 alias   elif
 abbr    else if () {}
     else if (${1:#:condition})
-    {
+    {${0}
     }
 
 snippet else
 alias   els, el, else
     else
-    {
+    {${0}
     }
 
 snippet ifelse
 alias   ifel
 abbr    if () {} else {}
     if (${1:#:condition})
-    {
+    {${0}
     }
     else
-    {
+    {${0}
     }
 
 snippet while
 abbr    while () {}
     while (${1:#:condition})
-    {
+    {${0}
     }
 
 snippet do_while
 alias   dowhile
 abbr    do {} while() {}
     do
-    {
+    {${0}
     }
     while (${1:#:condition});
 
 snippet for
 abbr    for () {}
     for (int ${1} = 0; $1 < ${2:#:max}; $1++)
-    {
+    {${0}
     }
 
 snippet foreach
 alias   fore fe
 abbr    foreach () {}
     foreach (var ${1:item} in ${2:#:iter})
-    {
+    {${0}
     }
 
 snippet switch
@@ -168,7 +167,7 @@ abbr    switch () {}
     switch (${1:#:var})
     {
         case ${2:#:val}:
-        {
+        {${0}
             break;
         }
     }
@@ -190,7 +189,7 @@ options head
 snippet default
 options head
     default:
-    {
+    {${0}
         break;
     }
 
@@ -198,7 +197,7 @@ snippet try_without_catch_nor_finally
 alias   try_n
 options head
     try
-    {
+    {${0}
     }
 
 snippet try_catch
@@ -206,7 +205,7 @@ alias   try
 abbr    try {} catch () {}
 options head
     try
-    {
+    {${0}
     }
     catch (${1:Exception} ${2:e})
     {
@@ -217,7 +216,7 @@ alias   try_cn
 abbr    try {} catch {}
 options head
     try
-    {
+    {${0}
     }
     catch
     {
@@ -228,7 +227,7 @@ alias   try_cf
 abbr    try {} catch () {} finally {}
 options head
     try
-    {
+    {${0}
     }
     catch (${1:Exception} ${2:e})
     {
@@ -242,7 +241,7 @@ alias   try_f
 abbr    try {} finally {}
 options head
     try
-    {
+    {${0}
     }
     finally
     {
@@ -253,7 +252,7 @@ alias   try_cnf
 abbr    try {} catch {} finally {}
 options head
     try
-    {
+    {${0}
     }
     catch
     {
@@ -265,20 +264,20 @@ options head
 snippet catch
 abbr    catch () {}
     catch (${1:Exception} ${2:e})
-    {
+    {${0}
     }
 
 snippet catch_n
 abbr    catch {}
     catch
-    {
+    {${0}
     }
 
 snippet finally
 alias   fin
 abbr    finally {}
     finally
-    {
+    {${0}
     }
 
 snippet throw
@@ -289,7 +288,7 @@ snippet lock
 abbr    lock () {}
 options head
     lock (${1:#:resource})
-    {
+    {${0}
     }
 
 snippet include
@@ -302,7 +301,7 @@ alias   using resource
 abbr    using () {}
 options head
     using (${1:#:resource})
-    {
+    {${0}
     }
 
 snippet checked
@@ -478,7 +477,7 @@ alias    yr
 snippet property_public
 alias   pp
     public ${1:int} ${2:#:Name}
-    {
+    {${0}
         get;
         set;
     }
@@ -486,7 +485,7 @@ alias   pp
 snippet property_private
 alias   pr
     ${1:int} ${2:#:Name}
-    {
+    {${0}
         get;
         set;
     }
@@ -500,11 +499,11 @@ options     head
 
 snippet eventmgr_add
 alias    ema
-    _eventManager.Add(${0});
+    _eventManager.Add(${1});${2}
 
 snippet eventmgr_remove
 alias    emr
-    _eventManager.Remove(${0});
+    _eventManager.Remove(${1});${2}
 
 snippet     output_to_consolee
 alias        out
@@ -587,7 +586,7 @@ options     head
     event Action ${0} = delegate {};
 
 snippet     delegate
-alias        del
+alias       del
 options     head
     delegate { ${0} }
 
@@ -622,7 +621,7 @@ options     head
     throw Assert.CreateException("TODO");
 
 snippet     log_todo
-alias       logtt
+alias       lgtt
 options     head
     Log.Trace("STEVETODO");
 
