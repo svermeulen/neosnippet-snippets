@@ -646,6 +646,11 @@ options     head
     Assert.IsNotEqual(${1}, ${2});
 
 snippet     container_bind_factory
+alias       binf
+options     head
+    Container.BindFactory<${1}, ${2}.Factory>();${3}
+
+snippet     subcontainer_bind_factory
 alias       sbinf
 options     head
     subContainer.BindFactory<${1}>();
@@ -654,11 +659,6 @@ snippet     container_bind_single
 alias       sbins
 options     head
     subContainer.Bind<${1}>().AsSingle();
-
-snippet     container_bind_interface
-alias       binf
-options     head
-    Container.Bind<${1}>().To<${2}>().AsSingle();
 
 snippet     container_bind_instance
 alias       bini
@@ -673,27 +673,32 @@ options     head
 snippet     container_bind_value
 alias       binv
 options     head
-    Container.BindValue<${1}>().To(${2});
+    Container.BindValue<${1}>().To(${2});${0}
 
 snippet     container_bind_all
 alias       bina
 options     head
-    Container.BindAllInterfaces<${0}>().To<${0}>().AsSingle();
+    Container.BindAllInterfaces<${0}>().To<${0}>().AsSingle();${0}
+
+snippet     container_bind_all
+alias       binas
+options     head
+    Container.BindAllInterfacesAndSelf<${0}>().To<${0}>().AsSingle();${0}
 
 snippet     subcontainer_bind_all
 alias       sbina
 options     head
-    subContainer.BindAllInterfaces<${0}>().To<${0}>().AsSingle();
+    subContainer.BindAllInterfaces<${0}>().To<${0}>().AsSingle();${0}
 
 snippet     container_bind_singleton
 alias       bins
 options     head
-    Container.Bind<${1}>().AsSingle();
+    Container.Bind<${1}>().AsSingle();${0}
 
 snippet     container_bind_installer
 alias       binr
 options     head
-    Container.Install<${1}>();
+    Container.Install<${1}>();${0}
 
 snippet     container_bind_iinitializable
 alias       binsi
