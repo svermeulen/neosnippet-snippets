@@ -4,29 +4,35 @@ alias   name
 abbr    namespace {}
 options head
     namespace ${1:#:Name}
-    {${0}
+    {
     }
 
 snippet class class
 alias   cl
     class ${1:#:Name}
-    {${0}
+    {
     }
 
 snippet public class
 alias   pcl
     public class ${1:#:Name}
-    {${0}
+    {
     }
 
 snippet usli
     using System.Linq;
+
+snippet pb
+    using (ProfileBlock.Start("${0}"))
 
 snippet usz
     using Zenject;
 
 snippet usu
     using UnityEngine;
+
+snippet usx
+    using UniRx;
 
 snippet readonly
 alias   ro
@@ -35,56 +41,57 @@ alias   ro
 snippet public static class
 alias   pscl
     public static class ${1:#:Name}
-    {${0}
+    {
     }
 
 snippet struct
 abbr    struct {}
     struct ${1:#:Name} ${2::} ${3:Interface}
-    {${0}
+    {
     }
 
 snippet interface
 abbr    interface {}
     interface ${1:#:IName} ${2::} ${3:Parent}
-    {${0}
+    {
     }
 
 snippet public interface
 alias pin
     public interface ${1:#:IName}
-    {${0}
+    {
     }
 
 snippet public_method
 alias pme
     public ${2:void} ${1:#:Method}()
-    {${3}
+    {
     }
 
 snippet method
 alias me
-    ${3}${2:void} ${1:#:Method}()
-    {${4}
+    void ${1:#:Method}(${2})
+    {
     }
 
 snippet enum
 abbr    enum {}
+alias en
     enum ${1:#:Name}
-    {${0}
+    {
     }
 
 # Declare
 snippet get
 abbr    get {}
     get
-    {${0}
+    {
     }
 
 snippet set
 abbr    set {}
     set
-    {${0}
+    {
     }
 
 
@@ -109,14 +116,14 @@ options head
 snippet if
 abbr    if () {}
     if (${1:#:condition})
-    {${0}
+    {
     }
 
 snippet elseif
 alias   elif
 abbr    else if () {}
     else if (${1:#:condition})
-    {${0}
+    {
     }
 
 snippet else
@@ -129,37 +136,37 @@ snippet ifelse
 alias   ifel
 abbr    if () {} else {}
     if (${1:#:condition})
-    {${0}
+    {
     }
     else
-    {${0}
+    {
     }
 
 snippet while
 abbr    while () {}
     while (${1:#:condition})
-    {${0}
+    {
     }
 
 snippet do_while
 alias   dowhile
 abbr    do {} while() {}
     do
-    {${0}
+    {
     }
     while (${1:#:condition});
 
 snippet for
 abbr    for () {}
     for (int ${1} = 0; $1 < ${2:#:max}; $1++)
-    {${0}
+    {
     }
 
 snippet foreach
 alias   fore fe
 abbr    foreach () {}
     foreach (var ${1:item} in ${2:#:iter})
-    {${0}
+    {
     }
 
 snippet switch
@@ -167,7 +174,7 @@ abbr    switch () {}
     switch (${1:#:var})
     {
         case ${2:#:val}:
-        {${0}
+        {
             break;
         }
     }
@@ -197,7 +204,7 @@ snippet try_without_catch_nor_finally
 alias   try_n
 options head
     try
-    {${0}
+    {
     }
 
 snippet try_catch
@@ -205,7 +212,7 @@ alias   try
 abbr    try {} catch () {}
 options head
     try
-    {${0}
+    {
     }
     catch (${1:Exception} ${2:e})
     {
@@ -216,7 +223,7 @@ alias   try_cn
 abbr    try {} catch {}
 options head
     try
-    {${0}
+    {
     }
     catch
     {
@@ -227,7 +234,7 @@ alias   try_cf
 abbr    try {} catch () {} finally {}
 options head
     try
-    {${0}
+    {
     }
     catch (${1:Exception} ${2:e})
     {
@@ -241,7 +248,7 @@ alias   try_f
 abbr    try {} finally {}
 options head
     try
-    {${0}
+    {
     }
     finally
     {
@@ -252,7 +259,7 @@ alias   try_cnf
 abbr    try {} catch {} finally {}
 options head
     try
-    {${0}
+    {
     }
     catch
     {
@@ -264,20 +271,20 @@ options head
 snippet catch
 abbr    catch () {}
     catch (${1:Exception} ${2:e})
-    {${0}
+    {
     }
 
 snippet catch_n
 abbr    catch {}
     catch
-    {${0}
+    {
     }
 
 snippet finally
 alias   fin
 abbr    finally {}
     finally
-    {${0}
+    {
     }
 
 snippet throw
@@ -288,20 +295,20 @@ snippet lock
 abbr    lock () {}
 options head
     lock (${1:#:resource})
-    {${0}
+    {
     }
 
 snippet include
 alias   us
 options head
-    using ${1};
+    using ${0};
 
 snippet using_resource
 alias   using resource
 abbr    using () {}
 options head
     using (${1:#:resource})
-    {${0}
+    {
     }
 
 snippet checked
@@ -475,17 +482,35 @@ alias    yr
     yield return ${0}
 
 snippet property_public
-alias   pp
-    public ${1:int} ${2:#:Name}
-    {${0}
-        get;
-        set;
+alias   ppa
+    public ${1:int} ${2:#:Name} { get; set; }
+
+snippet property_public
+alias   ppg
+    public ${1:Type} ${2:#:Name}
+    {
+        get { return ${0:Var}; }
+    }
+
+snippet property_public
+alias   ppsg
+    public ${1:Type} ${2:#:Name}
+    {
+        get { return ${0:Var}; }
+        set { ${0:Var} = value; }
+    }
+
+snippet property_public
+alias   pg
+    ${1:Type} ${2:#:Name}
+    {
+        get { return ${0:Var}; }
     }
 
 snippet property_private
 alias   pr
     ${1:int} ${2:#:Name}
-    {${0}
+    {
         get;
         set;
     }
@@ -493,22 +518,22 @@ alias   pr
 snippet     console_out
 abbr        out
 options     head
-    Console.WriteLine(${1:"${2\}"});
+    Console.WriteLine(${0:"${1\}"});
 
 # Project specific
 
 snippet eventmgr_add
 alias    ema
-    _eventManager.Add(${1});${2}
+    _eventManager.Add(${0});
 
 snippet eventmgr_remove
 alias    emr
-    _eventManager.Remove(${1});${2}
+    _eventManager.Remove(${0});
 
 snippet     output_to_consolee
 alias        out
 options     head
-    Console.WriteLine(${1:"${2\}"});
+    Console.WriteLine(${0:"${1\}"});
 
 snippet     output_to_consolee 2
 alias        oute
@@ -518,7 +543,7 @@ options     head
 snippet     return
 alias        re
 options     head
-    return ${1}
+    return ${0}
 
 snippet     return_false
 alias        rf
@@ -543,37 +568,37 @@ options     head
 snippet     debug_log
 alias        dl
 options     head
-    Debug.Log(${1:"${2\}"});
+    Debug.Log(${0:"${1\}"});
 
 snippet     debug_log_error
 alias        dle
 options     head
-    Debug.LogError(${1:"${2\}"});
+    Debug.LogError(${0:"${1\}"});
 
 snippet     log
 alias        lg
 options     head
-    Log.Info(${1:"${2\}"});
+    Log.Info(${0:"${1\}"});
 
 snippet     log_warn
 alias        lgw
 options     head
-    Log.Warn(${1:"${2\}"});
+    Log.Warn(${0:"${1\}"});
 
 snippet     log_error
 alias        lge
 options     head
-    Log.Error(${1:"${2\}"});
+    Log.Error(${0:"${1\}"});
 
 snippet     log_trace
 alias        lgt
 options     head
-    Log.Trace(${1:"${2\}"});
+    Log.Trace(${0:"${1\}"});
 
 snippet     log_debug
 alias        lgd
 options     head
-    Log.Debug(${1:"${2\}"});
+    Log.Debug(${0:"${1\}"});
 
 snippet     event_public
 alias       pev
@@ -598,22 +623,22 @@ options     head
 snippet     assert_not_null
 alias       asnn
 options     head
-    Assert.IsNotNull(${1:"${2\}"});
+    Assert.IsNotNull(${0:"${1\}"});
 
 snippet     assert_throws
 alias       asw
 options     head
-    Assert.Throws<${1}>(delegate { ${0}; });
+    Assert.Throws(() => ${0});
 
 snippet     assert_is_null
 alias       asin
 options     head
-    Assert.IsNull(${1});
+    Assert.IsNull(${0});
 
 snippet     assert
 alias       as
 options     head
-    Assert.That(${1});
+    Assert.That(${0});
 
 snippet     assert_todo
 alias       ast
@@ -623,7 +648,12 @@ options     head
 snippet     log_todo
 alias       lgtt
 options     head
-    Log.Trace("STEVETODO");
+    Log.Trace("TODO");
+
+snippet     log_todo
+alias       lgit
+options     head
+    Log.Info("TODO");
 
 snippet     gset
 abbr    gset
@@ -638,67 +668,67 @@ options     head
 snippet     assert_equals
 alias       ase
 options     head
-    Assert.IsEqual(${1}, ${2});
+    Assert.IsEqual(${1}, ${0});
 
 snippet     assert_not_equal
 alias       asne
 options     head
-    Assert.IsNotEqual(${1}, ${2});
+    Assert.IsNotEqual(${0}, ${1});
 
 snippet     container_bind_factory
 alias       binf
 options     head
-    Container.BindFactory<${1}, ${2}.Factory>();${3}
+    Container.BindFactory<${0}, ${1}.Factory>();
 
 snippet     subcontainer_bind_factory
 alias       sbinf
 options     head
-    subContainer.BindFactory<${1}>();
+    subContainer.BindFactory<${0}>();
 
 snippet     container_bind_single
 alias       sbins
 options     head
-    subContainer.Bind<${1}>().AsSingle();
+    subContainer.Bind<${0}>().AsSingle();
 
 snippet     container_bind_instance
 alias       bini
 options     head
-    Container.BindInstance(${1});
+    Container.BindInstance(${0});
 
 snippet     subcontainer_bind_instance
 alias       sbini
 options     head
-    subContainer.BindInstance(${1});
+    subContainer.BindInstance(${0});
 
 snippet     container_bind_value
 alias       binv
 options     head
-    Container.BindValue<${1}>().To(${2});${0}
+    Container.BindValue<${0}>().To(${1});
 
 snippet     container_bind_all
 alias       bina
 options     head
-    Container.BindAllInterfaces<${0}>().To<${0}>().AsSingle();${0}
+    Container.BindInterfacesTo<${0}>().AsSingle();
 
 snippet     container_bind_all
 alias       binas
 options     head
-    Container.BindAllInterfacesAndSelf<${0}>().To<${0}>().AsSingle();${0}
+    Container.BindInterfacesAndSelfTo<${0}>().AsSingle();
 
 snippet     subcontainer_bind_all
 alias       sbina
 options     head
-    subContainer.BindAllInterfaces<${0}>().To<${0}>().AsSingle();${0}
+    subContainer.BindInterfacesTo<${0}>().AsSingle();
 
 snippet     container_bind_singleton
 alias       bins
 options     head
-    Container.Bind<${1}>().AsSingle();${0}
+    Container.Bind<${0}>().AsSingle();
 
 snippet     container_bind_installer
 alias       binr
 options     head
-    Container.Install<${1}>();${0}
+    Container.Install<${0}>();
 
 snippet     container_bind_iinitializable
 alias       binsi
