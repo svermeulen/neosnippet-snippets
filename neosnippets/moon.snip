@@ -22,3 +22,22 @@ options     head
 snippet     require
 options     head
   ${1:moon} = require '$1'
+
+snippet     print
+alias out
+options     word
+    print(${0:"${1\}"})
+
+snippet     def
+abbr        def function(...): ...
+alias       me
+options     head
+    ${1:#:name} = (${2}) ->
+        ${0:TARGET}
+
+snippet     for
+abbr        for ... in ...: ...
+alias        fe
+options     head
+    for ${1:#:value} in *${2:#:list}
+        ${0:TARGET}
